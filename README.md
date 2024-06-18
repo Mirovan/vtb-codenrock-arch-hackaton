@@ -1,1 +1,0 @@
-# vtb-codenrock-arch-hackaton
