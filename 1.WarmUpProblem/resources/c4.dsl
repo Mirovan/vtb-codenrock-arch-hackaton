@@ -6,11 +6,11 @@ workspace {
         onlineShopSystem = softwareSystem "Интернет-магазин" "Web-приложение Интернет-магазин" {
             spaContainer = container "Single-Page Application" "Предоставляет доступ к приложению через браузер" "JavaScript, React" "Web Browser"
 
-            shopContainer = container "Clients service" "Личный кабинет клиента" "Python, Django"
-            shopDbContainer = container "Clients Database" "Хранение данных клиента" "Postgres" "Database"
+            shopContainer = container "Backend shop service" "Backend Интернет-магазина" "Node.js"
+            shopDbContainer = container "Shop Database" "Хранение данных Интернет-магазина" "Postgres" "Database"
 
-            statisticContainer = container "Statistic service" "Сервис  статистики действий пользователей на сайте" ""
-            statisticDbContainer = container "Statistic Database" "Хранение статистики действий пользователей на сайте" "Postgres???" "Database"
+            statisticContainer = container "Statistics service" "Сервис  статистики действий пользователей на сайте" ""
+            statisticDbContainer = container "Statistics Database" "Хранение статистики действий пользователей на сайте" "Postgres???" "Database"
 
             # mqContainer = container "Message Queue" "Брокер сообщений" "Kafka" "MQ"
         }
@@ -52,6 +52,25 @@ workspace {
             element "Container" {
                 background #438dd5
                 color #ffffff
+            }
+            element "Web Browser" {
+                shape WebBrowser
+            }
+            element "Database" {
+                shape Cylinder
+                background #7aa5c2
+            }
+            element "Component" {
+                background #85bbf0
+                color #000000
+            }
+            element "MQ" {
+                background #555555
+                color #000000
+            }
+            element "Other" {
+                background #eeeeee
+                color #000000
             }
         }
     }
