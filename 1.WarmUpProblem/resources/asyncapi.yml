@@ -1,0 +1,113 @@
+asyncapi: 3.0.0
+info:
+  title: API сбора статистики
+  version: "1.0"
+  description: WebSocket API для сбора статистики
+
+servers:
+  development:
+    host: localhost/ws/
+    description: Development WebSocket server
+    protocol: ws
+    security:
+      - $ref: "#/components/securitySchemes/access_token"
+  production:
+    host: localhost/ws/
+    description: Production WebSocket server
+    protocol: ws
+    security:
+      - $ref: "#/components/securitySchemes/access_token"
+
+channels:
+  publish:
+    address: /data
+    messages:
+      deviceSend:
+        $ref: "#/components/messages/deviceSend"
+
+operations:
+  deviceSender:
+    action: send
+    channel:
+      $ref: "#/channels/publish"
+  siteMovingSender:
+    action: send
+    channel:
+      $ref: "#/channels/publish"
+  pageActionSender:
+    action: send
+    channel:
+      $ref: "#/channels/publish"
+
+components:
+  messages:
+    deviceSend:
+      payload:
+        $ref: "#/components/schemas/device"
+    siteMovingSend:
+      payload:
+        $ref: "#/components/schemas/siteMoving"
+    pageActionSend:
+      payload:
+        $ref: "#/components/schemas/pageAction"
+
+  schemas:
+    device:
+      type: object
+      properties:
+        payload:
+          type: object
+          properties:
+            user_id:
+              type: string
+            browser:
+              type: string
+              examples:
+                - "Chrome 125.0.6422"
+            os:
+              type: string
+              examples:
+                - "Windows 10"
+            resolution:
+              type: string
+              examples:
+                - "1024x768"
+            ip:
+              type: string
+              examples:
+                - "145.25.24.023"
+      required:
+        - user_id
+        - ip
+    siteMoving:
+      type: object
+      properties:
+        payload:
+          type: object
+          properties:
+            user_id:
+              type: string
+            url:
+              type: string
+            create_time:
+              type: string
+    pageAction:
+      type: object
+      properties:
+        payload:
+          type: object
+          properties:
+            user_id:
+              type: string
+            url:
+              type: string
+            create_time:
+              type: string
+            element_selector:
+              type: string
+
+  securitySchemes:
+    access_token:
+      type: httpApiKey
+      name: token
+      in: query
