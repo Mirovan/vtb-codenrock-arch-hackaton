@@ -2,6 +2,8 @@ workspace {
 
     model {
         user = person "Пользователь" "Посетитель сайта"
+        analytic = person "Аналитик" "Эксперт по анализу данных"
+
 
         onlineShopSystem = softwareSystem "Интернет-магазин" "Web-приложение Интернет-магазин" {
             spaContainer = container "Single-Page Application" "Предоставляет доступ к приложению через браузер" "JavaScript, React" "Web Browser"
@@ -9,13 +11,13 @@ workspace {
             shopContainer = container "Backend shop service" "Backend Интернет-магазина" "Node.js"
             shopDbContainer = container "Shop Database" "Хранение данных Интернет-магазина" "Postgres" "Database"
 
-            statisticContainer = container "Statistics service" "Сервис  статистики действий пользователей на сайте" ""
-            statisticDbContainer = container "Statistics Database" "Хранение статистики действий пользователей на сайте" "Postgres???" "Database"
+            statisticContainer = container "Statistics capture service" "Сервис статистики действий пользователей на сайте" ""
+            statisticDbContainer = container "Statistics Database" "Хранение статистики действий пользователей на сайте" "Cassandra" "Database"
 
-            # mqContainer = container "Message Queue" "Брокер сообщений" "Kafka" "MQ"
+            statisticAnalyzeContainer = container "Statistics analyze service" "Сервис анализа статистики" ""
         }
 
-        statisticSystem = softwareSystem "Система сбора статистики" "Хранение статистики о действиях пользователя на страницах сайта"
+        statisticSystem = softwareSystem "Система сбора статистики" "Сбор и сохранение статистики о действиях пользователя на страницах сайта"
 
 
         user -> onlineShopSystem "Навигация по страницам"
@@ -26,6 +28,9 @@ workspace {
         spaContainer -> statisticContainer
         shopContainer -> shopDbContainer
         statisticContainer -> statisticDbContainer
+        statisticAnalyzeContainer -> statisticDbContainer
+        analytic -> statisticSystem
+        analytic -> onlineShopSystem "Получение результатов статистики"
     }
 
     views {
