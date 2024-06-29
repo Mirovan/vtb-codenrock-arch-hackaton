@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: API Documentation
+  version: 1.0.0
+
+tags:
+  - name: Заказы
+    description: Создание и просмотр заказов
+  - name: Доставка
+    description: Доставка заказов
+  - name: Ресторан
+    description: Управление конкретным рестораном
+  - name: Финансы
+    description: Финансовая и управленческая статистика
+
+paths:
+  /api/client/order/create:
+    post:
+      tags:
+        - Заказы
+      summary: Создать заказ
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderRequest"
+      responses:
+        "201":
+          description: Успешное создание заказа
+          content:
+            text/plain:
+              schema:
+                type: string
+  /api/client/order/view:
+    get:
+      tags:
+        - Заказы
+      summary: Получение данных о заказе
+      parameters:
+        - in: query
+          name: id
+          description: 'ID заказа'
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Данные о репозиториях продукта и их основных зависимостях
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientOrderResponse'
+
+
+components:
+  schemas:
+    OrderRequest:
+      type: object
+      properties:
+        item:
+          type: array
+          items:
+            $ref: "#/components/schemas/MenuItem"
+    MenuItem:
+      type: object
+      properties:
+        item:
+          type: string
+        count:
+          type: integer
+    ClientOrderResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        cdate:
+          type: string
+        status:
+          type: string
+        item:
+          type: array
+          items:
+            $ref: "#/components/schemas/MenuItem"
