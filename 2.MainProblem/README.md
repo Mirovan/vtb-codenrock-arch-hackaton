@@ -18,7 +18,7 @@
   - [Компоненты](2.Solution/3.Components.md)
   - [Модель C4](2.Solution/4.C4-model.md)
   - [Диаграмма развертывания](2.Solution/5.DeploymentDiagram.md)
-  - [Диаграмма развертывания](2.Solution/6.API.md)
+  - [Описание API и модели данных](2.Solution/6.API.md)
   - [Стоимость владения](2.Solution/7.Cost.md)
 - [ADR](./3.ARD/README.md)
   - [ADR-001 Отслеживание событий изменения статуса заказа](3.ADR/ADR-001-order-status-events.md)
