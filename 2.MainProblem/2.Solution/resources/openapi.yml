@@ -32,6 +32,24 @@ paths:
             text/plain:
               schema:
                 type: string
+  /api/client/order/status/create:
+    post:
+      tags:
+        - Заказы
+      summary: Обновление статуса заказа
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderStatusRequest"
+      responses:
+        "201":
+          description: Успешное обновление статуса заказа
+          content:
+            text/plain:
+              schema:
+                type: string
   /api/client/order/view:
     get:
       tags:
@@ -82,3 +100,12 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/MenuItem"
+    OrderStatusRequest:
+      type: object
+      properties:
+        order_id:
+          type: string
+        cdate:
+          type: string
+        status:
+          type: string
