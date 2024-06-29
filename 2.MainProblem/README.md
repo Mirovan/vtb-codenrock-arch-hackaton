@@ -7,7 +7,7 @@
 
 ## Структура
 
-- [Описание задачи](./1.Problem/README.md)
+- [Описание задачи](./1.Problem.md)
   - [Бизнес цели](./1.Problem/1.BusinessGoals.md)
   - [Функциональные требования](./1.Problem/2.FunctionalRequirements.md)
   - [Нефункциональные требования](./1.Problem/3.NonFunctionalRequirements.md)
