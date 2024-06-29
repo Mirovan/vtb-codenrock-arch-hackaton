@@ -20,5 +20,5 @@
   - [Диаграмма развертывания](2.Solution/5.DeploymentDiagram.md)
   - [Диаграмма развертывания](2.Solution/6.API.md)
   - [Стоимость владения](2.Solution/7.Cost.md)
-- [ADR](./4.ARD/README.md)
-  - [ADR-000-шаблон](./4.ADR/ADR-000-template.md)
+- [ADR](./3.ARD/README.md)
+  - [ADR-001 Отслеживание событий изменения статуса заказа](3.ADR/ADR-001-order-status-events.md)
