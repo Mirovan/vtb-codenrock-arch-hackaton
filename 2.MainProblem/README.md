@@ -2,8 +2,12 @@
 
 ## Команда проекта
 
+**Команда Big Int**
+
 - Максим Милованов (Telegram: @Mirovan)
 - Арина Свитова (Telegram: @svitova)
+
+Репозиторий решения: https://github.com/Mirovan/vtb-codenrock-arch-hackaton/tree/master/2.MainProblem
 
 ## Структура
 
@@ -22,3 +26,4 @@
   - [Стоимость владения](2.Solution/7.Cost.md)
 - [ADR](./3.ARD/README.md)
   - [ADR-001 Отслеживание событий изменения статуса заказа](3.ADR/ADR-001-order-status-events.md)
+  - [ADR-002 Интеграция сервиса заказов и доставки](3.ADR/ADR-002-order-delivery-integration.md)
